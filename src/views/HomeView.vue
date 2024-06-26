@@ -1,10 +1,10 @@
 <script setup>
-import { db } from '@/firebase/config'
-import { addDoc, collection, orderBy, query, Timestamp } from 'firebase/firestore'
+import { todosRef } from '@/firebase/config'
+import { addDoc, orderBy, query, Timestamp } from 'firebase/firestore'
 import { useCurrentUser, useCollection } from 'vuefire'
 
 const user = useCurrentUser()
-const todos = useCollection(query(collection(db, 'todos'), orderBy('createdAt', 'desc')), {
+const todos = useCollection(query(todosRef, orderBy('createdAt', 'desc')), {
   ssrKey: 'my-todos'
 })
 const newTodo = defineModel('newTodo')
@@ -15,7 +15,7 @@ const addNewTodo = async (e) => {
 
   try {
     const createdAt = Timestamp.fromDate(new Date())
-    const docRef = await addDoc(collection(db, 'todos'), {
+    const docRef = await addDoc(todosRef, {
       createdAt: createdAt,
       owner: user.value.uid,
       task: newTodo.value
