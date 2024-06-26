@@ -14,8 +14,9 @@ const addNewTodo = async (e) => {
   try {
     const createdAt = Timestamp.fromDate(new Date())
     const docRef = await addDoc(todosRef, {
-      task: newTodo.value,
-      createdAt: createdAt
+      createdAt: createdAt,
+      owner: user.value.uid,
+      task: newTodo.value
     })
     console.log(docRef)
   } catch (err) {
