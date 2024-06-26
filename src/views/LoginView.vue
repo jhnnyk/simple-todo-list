@@ -17,22 +17,19 @@ function handleSubmit(e) {
 
 <template>
   <main class="login">
-    <h2>Sign in to your account</h2>
+    <h2>Sign in</h2>
 
-    <form @submit="handleSubmit" class="space-y-6">
-      <label for="email">Email address</label>
-      <input v-model="email" id="email" name="email" type="email" autocomplete="email" required />
+    <form @submit="handleSubmit">
+      <label>
+        Email address:
+        <input v-model="email" type="email" required />
+      </label>
 
-      <label for="password"> Password </label>
-      <a href="#"> Forgot password? </a>
-      <input
-        v-model="password"
-        id="password"
-        name="password"
-        type="password"
-        autocomplete="current-password"
-        required
-      />
+      <label for="password">
+        Password:
+        <input v-model="password" type="password" autocomplete="current-password" required />
+        <a class="help" href="#">Forgot password?</a>
+      </label>
 
       <button type="submit">Sign in</button>
     </form>

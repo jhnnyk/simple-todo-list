@@ -1,5 +1,14 @@
 @import './base.css';
 
+main {
+  padding: 0 20px;
+}
+
+label {
+  display: block;
+  padding: 5px;
+}
+
 nav {
   display: flex;
   justify-content: flex-end;
@@ -17,4 +26,9 @@ nav .right {
 
 nav .router-link-active {
   border-bottom: 4px solid rgb(54, 54, 129);
+}
+
+.help {
+  font-size: 0.8em;
+  padding: 7px;
 }
