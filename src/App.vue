@@ -16,7 +16,7 @@ function logout() {
 </script>
 
 <template>
-  <header class="p-10">
+  <header>
     <nav>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/about">About</RouterLink>
@@ -31,7 +31,7 @@ function logout() {
     </nav>
   </header>
 
-  <RouterView class="px-10" />
+  <RouterView />
 </template>
 
 <style scoped></style>

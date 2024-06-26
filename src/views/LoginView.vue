@@ -1,17 +1,23 @@
 <script setup>
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import { useRouter } from 'vue-router'
 import { useFirebaseAuth } from 'vuefire'
 
 const auth = useFirebaseAuth() // only exists on client side
+const router = useRouter()
 
 const email = defineModel('email')
 const password = defineModel('password')
 
 function handleSubmit(e) {
   e.preventDefault()
-  signInWithEmailAndPassword(auth, email.value, password.value).catch((err) => {
-    console.error(err)
-  })
+  signInWithEmailAndPassword(auth, email.value, password.value)
+    .then(() => {
+      router.push('/')
+    })
+    .catch((err) => {
+      console.error(err)
+    })
 }
 </script>
 
