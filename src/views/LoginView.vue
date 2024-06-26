@@ -1,3 +1,20 @@
+<script setup>
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { useFirebaseAuth } from 'vuefire'
+
+const auth = useFirebaseAuth() // only exists on client side
+
+const email = defineModel('email')
+const password = defineModel('password')
+
+function handleSubmit(e) {
+  e.preventDefault()
+  signInWithEmailAndPassword(auth, email.value, password.value).catch((err) => {
+    console.error(err)
+  })
+}
+</script>
+
 <template>
   <div class="login">
     <!--
@@ -16,13 +33,14 @@
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form class="space-y-6">
+        <form @submit="handleSubmit" class="space-y-6">
           <div>
             <label for="email" class="block text-sm font-medium leading-6 text-gray-900"
               >Email address</label
             >
             <div class="mt-2">
               <input
+                v-model="email"
                 id="email"
                 name="email"
                 type="email"
@@ -35,17 +53,18 @@
 
           <div>
             <div class="flex items-center justify-between">
-              <label for="password" class="block text-sm font-medium leading-6 text-gray-900"
-                >Password</label
-              >
+              <label for="password" class="block text-sm font-medium leading-6 text-gray-900">
+                Password
+              </label>
               <div class="text-sm">
-                <a href="#" class="font-semibold text-sky-600 hover:text-sky-700"
-                  >Forgot password?</a
-                >
+                <a href="#" class="font-semibold text-sky-600 hover:text-sky-700">
+                  Forgot password?
+                </a>
               </div>
             </div>
             <div class="mt-2">
               <input
+                v-model="password"
                 id="password"
                 name="password"
                 type="password"

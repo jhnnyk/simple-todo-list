@@ -1,11 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-// import { signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { useCurrentUser, useFirebaseAuth } from 'vuefire'
+import { useCurrentUser } from 'vuefire'
 
-const auth = useFirebaseAuth() // only exists on client side
 const user = useCurrentUser()
-console.log(user)
 </script>
 
 <template>
@@ -17,7 +14,7 @@ console.log(user)
         Login
       </RouterLink>
 
-      <span v-if="user">Hello {{ user }}</span>
+      <span v-if="user">Hello {{ user.email }}</span>
     </nav>
   </header>
 
