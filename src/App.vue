@@ -14,7 +14,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-.router-link-active {
+nav .router-link-active {
   text-decoration: underline;
 }
 </style>
