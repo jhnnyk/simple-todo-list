@@ -1,1 +1,20 @@
 @import './base.css';
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  background: rgb(138, 150, 164);
+}
+
+nav a {
+  padding: 9px 10px 5px 10px;
+}
+
+nav .right {
+  margin-left: auto;
+  padding: 5px 10px;
+}
+
+nav .router-link-active {
+  border-bottom: 4px solid rgb(54, 54, 129);
+}
