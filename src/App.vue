@@ -3,14 +3,18 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
+  <header class="p-10">
     <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
+      <RouterLink class="px-4 text-sky-600 hover:text-sky-700" to="/">Home</RouterLink>
+      <RouterLink class="px-4 text-sky-600 hover:text-sky-700" to="/about">About</RouterLink>
     </nav>
   </header>
 
-  <RouterView />
+  <RouterView class="px-10" />
 </template>
 
-<style scoped></style>
+<style scoped>
+.router-link-active {
+  text-decoration: underline;
+}
+</style>
