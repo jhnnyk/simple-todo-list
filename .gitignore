@@ -30,4 +30,4 @@ coverage
 *.tsbuildinfo
 
 # firebase
-/src/firebase
+src/firebase
