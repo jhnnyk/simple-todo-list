@@ -1,8 +1,18 @@
 <script setup>
+import { signOut } from 'firebase/auth'
 import { RouterLink, RouterView } from 'vue-router'
-import { useCurrentUser } from 'vuefire'
+import { useCurrentUser, useFirebaseAuth } from 'vuefire'
 
 const user = useCurrentUser()
+const auth = useFirebaseAuth()
+
+function logout() {
+  signOut(auth)
+    .then(() => {})
+    .catch((err) => {
+      console.log(err)
+    })
+}
 </script>
 
 <template>
@@ -10,11 +20,13 @@ const user = useCurrentUser()
     <nav>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/about">About</RouterLink>
-      <RouterLink v-if="!user" to="/login">Login</RouterLink>
 
-      <div class="right" v-if="user">
-        Hello {{ user.email }}
-        <button>sign out</button>
+      <div class="right">
+        <span v-if="user">
+          Hello {{ user.email }}
+          <button @click="logout">sign out</button>
+        </span>
+        <span v-else><RouterLink class="button" v-if="!user" to="/login">Sign In</RouterLink></span>
       </div>
     </nav>
   </header>
